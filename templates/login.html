@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+    <form action="/verify_account" method="post">
+      User Name:<br>
+      <input type="text" name="user_name" value="" minlength="2" maxlength="10">
+      <br>
+      Password:<br>
+      <input type="password" name="user_pass" value="">
+        <br>
+         <input type="checkbox" name="sso" value="sso">Remember password<br>
+      <br>
+      <input id="login_submit" type="submit" value="Login">
+    </form>
+    <br>
+    <form action="/tweet" method="post">
+      User Name:
+        <input type="text" name="user_name" value="" minlength="2" maxlength="128">
+        <br>
+        Enter a tweet:
+      <input type="text" name="tweet_message" value="" minlength="2" maxlength="128">
+      <input id="tweet_submit" type="submit" value="tweet">
+    </form>
+
+    <!--<span id="myId"><span>-->
+<script>
+document.getElementById('myId').innerHTML=listCookies()
+function listCookies() {
+    var theCookies = document.cookie.split(';');
+    var aString = '';
+    for (var i = 1 ; i <= theCookies.length; i++) {
+        aString += theCookies[i-1] + "\n";
+}
+    return aString;
+}
+
+</script>
+<br>
+{% autoescape false %}
+
+{{ tweet_html }}
+
+{% endautoescape %}
+</body>
+</html>
